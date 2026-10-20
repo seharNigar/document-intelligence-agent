@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-dotenv
+python-multipart
+azure-ai-documentintelligence
+azure-core
+azure-ai-contentunderstanding
+azure-ai-projects
+azure-identity
+openai
+azure-search-documents
+sqlalchemy

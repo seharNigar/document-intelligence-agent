@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "bitbucket": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "bitbucket-mcp@5.0.6"
+      ],
+      "env": {
+        "BITBUCKET_URL": "https://api.bitbucket.org/2.0",
+        "BITBUCKET_WORKSPACE": "${env:BITBUCKET_WORKSPACE}",
+        "BITBUCKET_USERNAME": "${env:BITBUCKET_USERNAME}",
+        "BITBUCKET_PASSWORD": "${env:BITBUCKET_PASSWORD}",
+        "BITBUCKET_LOG_DISABLE": "true"
+      }
+    }
+  }
+}

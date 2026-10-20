@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <main class="workspace">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Document Intelligence home">
+        <span class="brand-mark"><i data-lucide="scan-line"></i></span>
+        <span>Document Intelligence</span>
+      </a>
+      <a class="docs-link" href="/docs" target="_blank" rel="noreferrer">API docs <i data-lucide="arrow-up-right"></i></a>
+    </header>
+
+    <section class="upload-band" aria-labelledby="upload-heading">
+      <div>
+        <p class="eyebrow">Invoice workspace</p>
+        <h1 id="upload-heading">Extract, inspect, and ask.</h1>
+        <p class="subhead">Upload an invoice to build a searchable document conversation.</p>
+      </div>
+      <form id="upload-form" class="upload-form">
+        <label class="drop-zone" id="drop-zone" for="invoice-file">
+          <i data-lucide="file-up"></i>
+          <span id="file-label">Choose an invoice or drop it here</span>
+          <small>PDF, image, or supported document</small>
+        </label>
+        <input id="invoice-file" name="file" type="file" accept=".pdf,image/*" hidden required>
+        <button class="primary-button" id="analyze-button" type="submit"><i data-lucide="sparkles"></i> Analyze invoice</button>
+      </form>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel invoice-panel" aria-labelledby="invoice-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Extraction</p>
+            <h2 id="invoice-heading">Invoice details</h2>
+          </div>
+          <span class="status-pill" id="invoice-status">Waiting for upload</span>
+        </div>
+        <div id="invoice-empty" class="empty-state"><i data-lucide="receipt-text"></i><p>Your structured invoice data will appear here.</p></div>
+        <div id="invoice-result" class="invoice-result" hidden>
+          <div class="metric-grid" id="metric-grid"></div>
+          <dl class="detail-list" id="detail-list"></dl>
+          <div class="line-items" id="line-items"></div>
+          <div class="warnings" id="warnings"></div>
+        </div>
+      </section>
+
+      <section class="panel chat-panel" aria-labelledby="chat-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Document chat</p>
+            <h2 id="chat-heading">Ask the invoice</h2>
+          </div>
+          <button class="icon-button" id="new-chat-button" type="button" title="Start a new conversation" aria-label="Start a new conversation"><i data-lucide="rotate-ccw"></i></button>
+        </div>
+        <label class="document-picker" for="document-select"><i data-lucide="folder-search-2"></i><select id="document-select" disabled><option value="">Select an indexed document</option></select></label>
+        <div id="chat-messages" class="chat-messages" aria-live="polite">
+          <div class="chat-empty"><i data-lucide="message-square-text"></i><p>Analyze an invoice, then ask about amounts, payment status, or compare documents.</p></div>
+        </div>
+        <form id="chat-form" class="chat-form">
+          <label class="sr-only" for="question">Question</label>
+          <textarea id="question" rows="2" placeholder="Ask a question about the selected invoice" disabled required></textarea>
+          <button class="send-button" id="send-button" type="submit" title="Send question" aria-label="Send question" disabled><i data-lucide="arrow-up"></i></button>
+        </form>
+      </section>
+    </section>
+  </main>
+  <template id="source-template"><a class="source-chip" target="_blank" rel="noreferrer"></a></template>
+  <script src="/static/app.js"></script>
+</body>
+</html>
